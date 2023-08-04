@@ -6,11 +6,14 @@ durationEl = document.getElementById('duration'),
 progress = document.getElementById('progress'),
 progressCircle = document.getElementById('progress-circle');
 playerProgress = document.getElementById('player-progress'),
+shufBtn = document.getElementById('shuffle'),
 prevBtn = document.getElementById('prev'),
 nextBtn = document.getElementById('next'),
 playBtn = document.getElementById('play'),
+volBtn = document.getElementById('volume'),
 background = document.getElementById('bg-img');
-
+var audioPlayer = document.getElementById('audioPlayer');
+// const currentSongSource = getCurrentSource();
 const music = new Audio();
 
 const songs = [
@@ -71,7 +74,7 @@ const songs = [
     {
         path: 'assets/10.mp3',
         displayName: 'damn',
-        cover: 'assets/damn.jpg',
+        cover: 'assets/damn2.jpg',
         artist: 'Fujii Kaze',
     },
     {
@@ -107,7 +110,7 @@ const songs = [
     {
         path: 'assets/16.mp3',
         displayName: 'Closed Ending',
-        cover: 'assets/closed.webp',
+        cover: 'assets/closed.jpg',
         artist: 'SHAUN',
     },
     {
@@ -115,6 +118,18 @@ const songs = [
         displayName: '風になる',
         cover: 'assets/ghibli2.jpg',
         artist: 'Tsuji Ayano',
+    },
+    {
+        path: 'assets/18.mp3',
+        displayName: 'Lady',
+        cover: 'assets/lady2.jpg',
+        artist: '米津玄師',
+    },
+    {
+        path: 'assets/19.mp3',
+        displayName: 'くちづけ Diamond',
+        cover: 'assets/yamada.jpg',
+        artist: 'WEAVER',
     }
 ]
 
@@ -155,14 +170,24 @@ function loadMusic(song){
     background.src = song.cover;
 }
 
-// function changeMusic(direction){
-//     musicIndex = Math.floor(Math.random() * songs.length);
-//     musicIndex = (musicIndex + direction + songs.length) % songs.length;
+function changeMusic(direction){
+    // musicIndex = Math.floor(Math.random() * songs.length);
+    musicIndex = (musicIndex + direction + songs.length) % songs.length;
+    loadMusic(songs[musicIndex]);
+    playMusic();
+}
+
+// function changeMusic() {
+//     let randomIndex;
+//     do {
+//         randomIndex = Math.floor(Math.random() * songs.length);
+//     } while (randomIndex === musicIndex); // Ensure it's not the same as the current index
+//     musicIndex = randomIndex;
 //     loadMusic(songs[musicIndex]);
 //     playMusic();
 // }
 
-function changeMusic() {
+function changeMusic2(){
     let randomIndex;
     do {
         randomIndex = Math.floor(Math.random() * songs.length);
@@ -172,6 +197,27 @@ function changeMusic() {
     playMusic();
 }
 
+function getCurrentSource() {
+    return music.src;
+}
+
+function muteVolume() {
+    music.muted = true;
+    volBtn.classList.replace('fa-volume-high', 'fa-volume-mute');
+}
+
+function unmuteVolume() {
+    music.muted = false;
+    volBtn.classList.replace('fa-volume-mute', 'fa-volume-high');
+}
+
+function toggleVolume() {
+    if (music.muted) {
+        unmuteVolume();
+    } else {
+        muteVolume();
+    }
+}
 
 
 function updateProgressBar(){
@@ -196,10 +242,12 @@ function setProgressBar(e){
 }
 
 playBtn.addEventListener('click', togglePlay);
-// prevBtn.addEventListener('click', () => changeMusic(-1));
-// nextBtn.addEventListener('click', () => changeMusic(1));
-prevBtn.addEventListener('click', changeMusic);
-nextBtn.addEventListener('click', changeMusic);
+prevBtn.addEventListener('click', () => changeMusic(-1));
+nextBtn.addEventListener('click', () => changeMusic(1));
+// prevBtn.addEventListener('click', changeMusic);
+// nextBtn.addEventListener('click', changeMusic);
+shufBtn.addEventListener('click', changeMusic2);
+volBtn.addEventListener('click', toggleVolume);
 music.addEventListener('ended', () => changeMusic(1));
 music.addEventListener('timeupdate', updateProgressBar);
 playerProgress.addEventListener('click', setProgressBar);

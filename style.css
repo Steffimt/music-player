@@ -40,7 +40,7 @@ body{
 
 .container{
     background-color: rgba(231, 231, 231, 0.3);
-    height: 490px;
+    height: 480px;
     width: 400px;
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
@@ -84,14 +84,14 @@ h2{
     font-size: 25px;
     text-align: center;
     font-weight: 500;
-    margin: -15px 0 0;
+    margin: -18px 0 0;
 }
 
 h3{
     font-size: 18px;
     text-align: center;
     font-weight: 500;
-    margin: 10px 0 0;
+    margin: 8px 0 0;
 }
 
 .player-progress{
@@ -99,7 +99,7 @@ h3{
     border-radius: 5px;
     cursor: pointer;
     /* margin: 40px 20px 35px; */
-    margin: 30px 20px 35px;
+    margin: 30px 20px 30px;
     height: 4px;
     width: 90%;
     position: relative;
@@ -133,8 +133,8 @@ h3{
 .player-controls{
     position: relative;
     top: -5px;
-    left: 120px;
-    width: 200px;
+    left: 57px;
+    width: 325px;
 }
 
 .fa-solid{
@@ -152,7 +152,94 @@ h3{
 }
 
 .play-button{
-    font-size: 44px;
+    font-size: 43px;
     position: relative;
-    top: 3px;
+    top: 5px;
+}
+
+@media (max-width: 450px){
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container{
+        height: 280px;
+        width: 230px;
+        left: 1px;
+        position: relative;
+    }
+    .player-img {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        top: -50px;
+        left: 40px;
+    }
+    h2{
+        font-size: 22px;
+        margin: -30px 0 0;
+    }
+    h3 {
+        font-size: 15px;
+        margin: 5px 0 0;
+    }
+    .player-progress{
+        margin: 25px 11px 30px 11px;
+    }
+    .player-controls {
+        position: relative;
+        top: -2px;
+        left: 15px;
+        width: 240px;
+    }
+    .fa-solid{
+        margin-right: 20px;
+        font-size: 20px;
+    }
+    .play-button{
+        font-size: 31px;
+        top: 4px;
+    }
+}
+
+@media (min-width: 450px) and (max-width: 768px){
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container{
+        height: 380px;
+        width: 300px;
+        left: 1px;
+        position: relative;
+    }
+    .player-img {
+        width: 230px;
+        height: 230px;
+        position: relative;
+        top: -50px;
+        left: 35px;
+    }
+    h2{
+        margin: -30px 0 0;
+    }
+    .player-progress{
+        margin: 25px 13px 30px 13px;
+    }
+    .player-controls {
+        position: relative;
+        top: -5px;
+        left: 38px;
+        width: 250px;
+    }
+    .fa-solid{
+        margin-right: 23px;
+        font-size: 23px;
+        top: 3px;
+    }
+    .play-button{
+        font-size: 33px;
+    }
 }
