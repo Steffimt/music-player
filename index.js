@@ -51,7 +51,7 @@ const songs = [
         path: 'assets/6.mp3',
         displayName: 'Movie',
         cover: 'assets/movie2.jpg',
-        artist: 'Junny',
+        artist: 'JUNNY',
     },
     {
         path: 'assets/7.mp3',
@@ -130,6 +130,12 @@ const songs = [
         displayName: 'くちづけ Diamond',
         cover: 'assets/yamada.jpg',
         artist: 'WEAVER',
+    },
+    {
+        path: 'assets/20.mp3',
+        displayName: 'now ur gone.',
+        cover: 'assets/gone.webp',
+        artist: 'will hyde',
     }
 ]
 
